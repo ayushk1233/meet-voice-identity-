@@ -15,7 +15,7 @@ MID_SCORE_GAP = 0.20
 def test_multi_chunk_averaging():
     print("🚀 Initializing Test Suite...")
     engine = VoiceIdentityEngine()
-    TARGET_AUDIO = "processed_audios/vid_clean.wav"
+    TARGET_AUDIO = "vid_clean.wav"
     
     print("📂 Loading Voice Database (seed_data.json)...\n")
     with open("seed_data.json", "r") as f:
