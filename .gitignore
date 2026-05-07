@@ -77,6 +77,5 @@ Thumbs.db
 
 # Project specific
 pretrained_models/
-employee_audios/
-processed_audios/
-seed_data.json
+employee_audios/mystery.mkv
+processed_audios/mystery_clean.wav
