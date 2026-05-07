@@ -15,7 +15,7 @@ MID_SCORE_GAP = 0.20
 def test_multi_chunk_averaging():
     print("🚀 Initializing Test Suite...")
     engine = VoiceIdentityEngine()
-    TARGET_AUDIO = "vid_clean.wav"
+    TARGET_AUDIO = "vid2_clean.wav"
     
     print("📂 Loading Voice Database (seed_data.json)...\n")
     with open("seed_data.json", "r") as f:
@@ -25,11 +25,21 @@ def test_multi_chunk_averaging():
 
     # --- OUR TEST SUITE ---
     test_cases = {
-        "Expected: Isanur": [
-            (91.0, 100.5),
-            (470.0, 479.5),
-            (1125.0, 1134.5)
+        "Expected: Sanket": [
+            (120.0, 119.5),
+            (340.0, 349.5),
+            (710.0, 719.5)
         ],
+        "Expected: Ninad": [
+            (760.0, 769.5),
+            (810.0, 819.5),
+            (915.0, 924.5)
+        ],
+        "Expected: Mann": [   
+            (1170.0,1179.5),
+            (1230.0,1239.5),
+            (1320.0,1329.5)
+        ]
         
     }
 
