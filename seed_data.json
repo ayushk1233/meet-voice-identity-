@@ -1,6 +1,6 @@
 [
   {
-    "name": "Ketan",
+    "name": "Ketan Patil",
     "source_file": "ketan_eng_clean.wav",
     "embedding": [
       29.138671875,
@@ -199,7 +199,7 @@
     "model_version": "speechbrain/spkrec-ecapa-voxceleb"
   },
   {
-    "name": "Ketan",
+    "name": "Ketan Patil",
     "source_file": "ketan_hin_clean.wav",
     "embedding": [
       20.085487365722656,
@@ -597,7 +597,7 @@
     "model_version": "speechbrain/spkrec-ecapa-voxceleb"
   },
   {
-    "name": "Isanur",
+    "name": "Isanur Sardar",
     "source_file": "isanur_hin_clean.wav",
     "embedding": [
       17.208053588867188,
@@ -796,7 +796,7 @@
     "model_version": "speechbrain/spkrec-ecapa-voxceleb"
   },
   {
-    "name": "Ninad",
+    "name": "Ninad Baruah",
     "source_file": "ninad_eng_clean.wav",
     "embedding": [
       -5.812430381774902,
@@ -995,7 +995,7 @@
     "model_version": "speechbrain/spkrec-ecapa-voxceleb"
   },
   {
-    "name": "Sanket",
+    "name": "Sanket Satpute ",
     "source_file": "sanket_eng_clean.wav",
     "embedding": [
       32.31245422363281,
@@ -1194,7 +1194,7 @@
     "model_version": "speechbrain/spkrec-ecapa-voxceleb"
   },
   {
-    "name": "Sanket",
+    "name": "Sanket Satpute ",
     "source_file": "sanket_hin_clean.wav",
     "embedding": [
       16.62087631225586,
@@ -1393,7 +1393,7 @@
     "model_version": "speechbrain/spkrec-ecapa-voxceleb"
   },
   {
-    "name": "Isanur",
+    "name": "Isanur Sardar",
     "source_file": "isanur_eng_clean.wav",
     "embedding": [
       6.9101715087890625,
@@ -1592,7 +1592,7 @@
     "model_version": "speechbrain/spkrec-ecapa-voxceleb"
   },
   {
-    "name": "Ninad",
+    "name": "Ninad Baruah",
     "source_file": "ninad_hin_clean.wav",
     "embedding": [
       -17.283367156982422,
