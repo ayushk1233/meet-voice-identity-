@@ -1,52 +1,53 @@
 import os
+import sys
 import subprocess
 
-# Define our directories
-RAW_DIR = "employee_audios"
 PROCESSED_DIR = "processed_audios"
 
-def preprocess_media():
-    print("🚀 Starting Media Preprocessing & Extraction Pipeline...\n")
+def process_single_file(input_path):
+    print("🚀 Starting Targeted Media Preprocessing...\n")
     
-    # Ensure the output directory exists
     if not os.path.exists(PROCESSED_DIR):
         os.makedirs(PROCESSED_DIR)
 
-    # Loop through all raw files
-    for filename in os.listdir(RAW_DIR):
-        # Catch common AUDIO and VIDEO formats
-        if filename.lower().endswith(('.mp3', '.m4a', '.wav', '.ogg', '.mp4', '.mov', '.mkv', '.webm')):
-            input_path = os.path.join(RAW_DIR, filename)
-            
-            # Create a clean output filename ALWAYS ending in .wav
-            name_without_ext = os.path.splitext(filename)[0]
-            output_filename = f"{name_without_ext}_clean.wav"
-            output_path = os.path.join(PROCESSED_DIR, output_filename)
+    if not os.path.exists(input_path):
+        print(f"❌ ERROR: Cannot find file at '{input_path}'")
+        sys.exit(1)
 
-            print(f"⏳ Extracting & Washing: {filename}...")
+    # Extract the filename from the path
+    filename = os.path.basename(input_path)
+    
+    # Create the clean output filename
+    name_without_ext = os.path.splitext(filename)[0]
+    output_filename = f"{name_without_ext}_clean.wav"
+    output_path = os.path.join(PROCESSED_DIR, output_filename)
 
-            # The exact FFmpeg command:
-            # -vn       : Drops the video stream (crucial for .mp4 inputs)
-            # -ar 16000 : 16kHz sample rate
-            # -ac 1     : Mono channel
-            # -c:a pcm_s16le : 16-bit WAV format
-            command = [
-                "ffmpeg",
-                "-y",  # Automatically overwrite existing files
-                "-i", input_path,
-                "-vn", # <--- NEW: No Video flag
-                "-ar", "16000",
-                "-ac", "1",
-                "-c:a", "pcm_s16le",
-                output_path
-            ]
+    print(f"⏳ Extracting & Washing: {filename}...")
 
-            # Execute the conversion
-            try:
-                subprocess.run(command, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
-                print(f"✅ Success -> Saved to {PROCESSED_DIR}/{output_filename}\n")
-            except subprocess.CalledProcessError:
-                print(f"❌ FAILED to process {filename}. Check if file is corrupted.\n")
+    # The FFmpeg command (Drops video, forces 16kHz Mono WAV)
+    command = [
+        "ffmpeg",
+        "-y",
+        "-i", input_path,
+        "-vn", 
+        "-ar", "16000",
+        "-ac", "1",
+        "-c:a", "pcm_s16le",
+        output_path
+    ]
+
+    try:
+        subprocess.run(command, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
+        print(f"✅ Success -> Saved to {output_path}\n")
+    except subprocess.CalledProcessError:
+        print(f"❌ FAILED to process {filename}. Check if file is corrupted.\n")
 
 if __name__ == "__main__":
-    preprocess_media()
+    # Check if the user passed a file path in the terminal
+    if len(sys.argv) < 2:
+        print("⚠️ Usage Error: You must provide a file path.")
+        print("Example: python preprocess_audio.py my_video.mp4")
+    else:
+        # Pass the targeted file to the function
+        target_file = sys.argv[1]
+        process_single_file(target_file)
